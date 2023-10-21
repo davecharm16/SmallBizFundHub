@@ -22,6 +22,7 @@ function LoginOptions({ navigation }) {
                     style={{ marginTop: 10 }}
                     buttonColor={theme.colors.primary}
                     textColor={theme.colors.secondary}
+                    onPress={() => navigation.navigate('RegisterBusiness')}
                 >
                     Business Owner
                 </Button>

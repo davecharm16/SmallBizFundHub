@@ -6,6 +6,8 @@ import MyTheme from './src/theme/theme';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -31,17 +33,19 @@ export default function App() {
   }
 
   return (
-    <PaperProvider theme={MyTheme}>
-      <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
-        <StatusBar
-          animated={true}
-          backgroundColor="#61dafb"
-          barStyle='default'
-          hidden={false}
-        />
-        <AppNavigation />
-      </SafeAreaView>
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider theme={MyTheme}>
+        <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
+          <StatusBar
+            animated={true}
+            backgroundColor="#61dafb"
+            barStyle='default'
+            hidden={false}
+          />
+          <AppNavigation />
+        </SafeAreaView>
+      </PaperProvider>
+    </Provider>
   );
 }
 
